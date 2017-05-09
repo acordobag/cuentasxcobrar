@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+      <act_window id="action_list_routes" name="Zonas" res_model="cxc.route" view_mode="tree,form" target="current" domain="[]" limit="80"/>
+
+      <record id="view_form_route" model="ir.ui.view">
+        <field name="name">Rutas</field>
+        <field name="model">cxc.route</field>
+        <field name="arch" type="xml">
+       
+          <form>
+            <sheet>
+              <div class="oe_title">
+                <label for="name" class="oe_edit_only" required="1"/>
+                  <h1><field name="name"/></h1>
+              </div>
+              <group name="group_top">
+                  <field name="driver_id" domain="[('is_driver', '=', True)]" options="{'no_create': True}"/>
+                  <field name="zones" widget="many2many_tags" options="{'no_create': True}"/>
+              </group>
+
+            </sheet>
+          </form>
+        </field>
+      </record>
+
+      <record id="view_tree_route" model="ir.ui.view">
+        <field name="name">Listado de Rutas</field>
+        <field name="model">cxc.route</field>
+        <field name="arch" type="xml">
+          <tree>
+            <field name="name"/>
+          </tree>
+        </field>
+      </record>
+
+    </data>
+</odoo>

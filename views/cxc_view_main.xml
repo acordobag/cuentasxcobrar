@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <menuitem name="Cuentas por cobrar" id="cuentas_por_cobrar.menu_root" action="base.action_partner_customer_form"/>
+        <menuitem name="Clientes" id="cuentas_por_cobrar.submenu_1" action="base.action_partner_customer_form" parent="cuentas_por_cobrar.menu_root"/>
+        <menuitem name="Cuentas" id="cuentas_por_cobrar.submenu_2" action="action_cxc_account" parent="cuentas_por_cobrar.menu_root"/>
+        <menuitem name="Cierre diario" id="cuentas_por_cobrar.submenu_3" action="action_list_not_approved" parent="cuentas_por_cobrar.menu_root"/>
+        <menuitem name="Zonas" id="cuentas_por_cobrar.submenu_4" action="action_list_zones" parent="cuentas_por_cobrar.menu_root"/>
+        <menuitem name="Rutas" id="cuentas_por_cobrar.submenu_5" action="action_list_routes" parent="cuentas_por_cobrar.menu_root"/>
+    </data>
+</odoo>

@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+      <act_window id="action_list_zones" name="Zonas" res_model="cxc.route.zone" view_mode="tree,form" target="current" domain="[]" limit="80"/>
+
+      <record id="view_form_cxc_route_zone" model="ir.ui.view">
+        <field name="name">Zonas</field>
+        <field name="model">cxc.route.zone</field>
+        <field name="arch" type="xml">
+          <form>
+            <sheet>
+              <div class="oe_title">
+                <label for="name" class="oe_edit_only" required="1"/>
+                  <h1><field name="name" required="1"/></h1>
+              </div>
+              <notebook>
+                <page string="Clientes">
+                    <field name="customers">
+                      <tree edit="false" delete="true" create="false" string="Clientes de la zona">
+                          <field name="person_id"/>
+                          <field name="name" />
+                      </tree>
+                    </field>
+                </page>
+              </notebook>
+            </sheet>
+          </form>
+        </field>
+      </record>
+
+      <record id="view_tree_cxc_route_zone" model="ir.ui.view">
+        <field name="name">Listado de Zonas</field>
+        <field name="model">cxc.route.zone</field>
+        <field name="arch" type="xml">
+          <tree>
+            <field name="name"/>
+          </tree>
+        </field>
+      </record>
+
+    </data>
+</odoo>

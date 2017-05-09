@@ -1,0 +1,71 @@
+<odoo>
+  <data>
+    <act_window id="action_cxc_account" name="Cuentas" res_model="cxc.account" view_mode="tree,form,kanban" />
+
+    <record id="view_form_account" model="ir.ui.view">
+      <field name="name">Customer account form</field>
+      <field name="model">cxc.account</field>
+      <field name="arch" type="xml">
+        <form string="Accounts">
+          <header>
+            <button name="create_payment" type="object" string="Añadir abono" class="oe_highlight" />
+          </header>
+          <sheet>
+            <h1>
+              <field name="name" default_focus="1" placeholder="Descripción" />
+            </h1>
+
+            <h2>Deudor : <field name="customerId" readonly="1"/></h2>
+            <hr/>
+            <group>
+              <group>
+                <field name="initialAmmount" />
+                <field name="actualAmmount" />
+                <field name="numberOfPayments" />
+              </group>
+              <group>
+                <field name="charge" />
+                <field name="paymentTerm" />
+              </group>
+            </group>
+            <notebook>
+              <page string="Abonos">
+                <field name="payments">
+                  <tree string="abonos" edit="false" delete="false" create="false">
+                    <field name="ammount" />
+                    <field name="date" />
+                    <field name="approved" />
+                  </tree>
+                </field>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_tree_accounts" model="ir.ui.view">
+      <field name="name">Customer account tree</field>
+      <field name="model">cxc.account</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+          <field name="initialAmmount" />
+          <field name="actualAmmount" />
+          <field name="paymentTerm" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_search_accounts" model="ir.ui.view">
+      <field name="name">Customer account search</field>
+      <field name="model">cxc.account</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="customerId" />
+        </search>
+      </field>
+    </record>
+
+  </data>
+</odoo>

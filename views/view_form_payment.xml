@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+      <act_window id="action_list_not_approved" name="Sin Aprobar" res_model="cxc.account.payment" view_mode="tree,form" target="current" context="{'approved': False}" domain="[]" limit="80"/>
+
+      <record id="view_form_cxc_account_payment" model="ir.ui.view">
+        <field name="name">Payment form</field>
+        <field name="model">cxc.account.payment</field>
+        <field name="arch" type="xml">
+          <form>
+            <sheet>
+              <h1>Abono</h1>
+              <group>
+                <group>
+                  <field name="ammount" required="1"/>
+                  <field name="date" required="1"/>
+                  <field name="accountId" invisible="1"/>
+                </group>
+              </group>
+            </sheet>
+          </form>
+        </field>
+      </record>
+
+      <record id="view_tree_account_payment" model="ir.ui.view">
+        <field name="name">Listado de abonos</field>
+        <field name="model">cxc.account.payment</field>
+        <field name="arch" type="xml">
+          <tree>
+
+            <field name="ammount"/>
+            <field name="date"/>
+            <field name="accountId" invisible="1"/>
+
+          </tree>
+        </field>
+      </record>
+
+    </data>
+</odoo>

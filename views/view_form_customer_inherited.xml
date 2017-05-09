@@ -1,0 +1,51 @@
+<odoo>
+  <data>
+
+    <record id="view_form_customer_inherited" model="ir.ui.view">
+      <field name="name">Customers form</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+      <sheet position="before">
+        <header>
+          <button name="userAccounts" type="object" string="Ver cuentas" class="oe_highlight"/>
+        </header>
+      </sheet>
+        <!-- Hide no using fields -->
+        <field name="parent_id" position="before">
+         <field name="person_id" placeholder="Cedula"/><br/>
+         <field name="zone_id" placeholder="Zona"/>
+        </field>
+        <xpath expr="/form/sheet/notebook/page[1]" position="attributes">
+          <attribute name="attrs">{"invisible":[("is_company","!=",True)]}</attribute>
+        </xpath>
+        <xpath expr="/form/sheet/notebook/page[3]" position="attributes">
+          <attribute name="attrs">{"invisible":[("customer","=",True)]}</attribute>
+        </xpath>
+
+        <field name="website" position="attributes">
+          <attribute name="attrs">{"invisible":[("customer","=",True)]}</attribute>
+        </field>
+
+        <field name="category_id" position="attributes">
+          <attribute name="attrs">{"invisible":[("customer","=",True)]}</attribute>
+        </field>
+
+        <field name="function" position="attributes">
+          <attribute name="attrs">{"invisible":[("customer","=",True)]}</attribute>
+        </field>
+
+        <field name="lang" position="attributes">
+          <attribute name="attrs">{"invisible":[("customer","=",True)]}</attribute>
+        </field>
+
+        <field name="zip" position="attributes">
+          <attribute name="attrs">{"invisible":[("customer","=",True)]}</attribute>
+        </field>
+
+
+      </field>
+    </record>
+
+  </data>
+</odoo>
