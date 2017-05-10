@@ -19,13 +19,13 @@
             <hr/>
             <group>
               <group>
-                <field name="initialAmmount" />
+                <field name="initialAmmount" required="1" widget="monetary" options="{'currency_field': 'currency_id'}" />
                 <field name="actualAmmount" />
-                <field name="numberOfPayments" />
+                <field name="numberOfPayments" required="1" />
               </group>
               <group>
-                <field name="charge" />
-                <field name="paymentTerm" />
+                <field name="charge" required="1" />
+                <field name="paymentTerm" required="1" />
               </group>
             </group>
             <notebook>

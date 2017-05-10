@@ -6,5 +6,6 @@
         <menuitem name="Cierre diario" id="cuentas_por_cobrar.submenu_3" action="action_list_not_approved" parent="cuentas_por_cobrar.menu_root"/>
         <menuitem name="Zonas" id="cuentas_por_cobrar.submenu_4" action="action_list_zones" parent="cuentas_por_cobrar.menu_root"/>
         <menuitem name="Rutas" id="cuentas_por_cobrar.submenu_5" action="action_list_routes" parent="cuentas_por_cobrar.menu_root"/>
+        <menuitem name="Ruta actual" id="cuentas_por_cobrar.submenu_6" action="action_driver_current_route" parent="cuentas_por_cobrar.menu_root"/>
     </data>
 </odoo>

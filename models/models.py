@@ -13,7 +13,7 @@ class route(models.Model):
                                         'cxc_route_relation', # nombre de la tabla de relación
                                         'route_id', # campo para "este" registro
                                         'zone_id', # campo para "otro" registro
-                                        string='Tasks')
+                                        string='Zonas')
     route_state = fields.Selection([(1,'Asignada'),(2,'Proceso'),(3,'Terminada')])
 
 
@@ -59,7 +59,7 @@ class account(models.Model):
     payments = fields.One2many('cxc.account.payment','accountId','Abonos')
     already_pay = fields.Boolean('Pagada?')
 
-
+    @api.one
     def compute_calc_actual_ammount(self):
         self.actualAmmount = self.initialAmmount
         for p in self.payments:

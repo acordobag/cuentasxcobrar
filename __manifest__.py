@@ -11,6 +11,7 @@
 
     'author': "Adrian Cordoba",
     'website': "",
+    "application": True,
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
@@ -30,6 +31,7 @@
         'views/view_form_users_inherited.xml',
         'views/view_form_zone.xml',
         'views/view_form_route.xml',
+        'views/view_driver_current_route.xml',
         'views/cxc_view_main.xml'
     ]
     # only loaded in demonstration mode

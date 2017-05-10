@@ -14,6 +14,7 @@
                   <h1><field name="name"/></h1>
               </div>
               <group name="group_top">
+                  <field name="date" required="1"/>
                   <field name="driver_id" domain="[('is_driver', '=', True)]" options="{'no_create': True}"/>
                   <field name="zones" widget="many2many_tags" options="{'no_create': True}"/>
               </group>
