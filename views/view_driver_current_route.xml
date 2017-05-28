@@ -17,6 +17,7 @@
           <tree>
             <field name="customerId"/>
             <field name="name"/>
+            <field name="charge"/>
             <button string="Agregar abono" class="oe_highlight" type="object" name="create_payment"/>
           </tree>
         </field>

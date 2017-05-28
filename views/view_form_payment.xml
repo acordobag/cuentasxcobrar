@@ -26,10 +26,10 @@
         <field name="model">cxc.account.payment</field>
         <field name="arch" type="xml">
           <tree>
-
+            <field name="accountId"/>
             <field name="ammount"/>
             <field name="date"/>
-            <field name="accountId" invisible="1"/>
+            
 
           </tree>
         </field>
