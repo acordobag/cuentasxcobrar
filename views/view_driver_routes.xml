@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+
+    <record id="view_driver_routes" model="ir.ui.view">
+        <field name="name">Ruta asigandas</field>
+        <field name="model">cxc.route</field>
+        <field name="arch" type="xml">
+          <tree>
+            <field name="name"/>
+            <field name="date"/>
+            <field name="route_state"/>
+          </tree>
+        </field>
+    </record>
+    
+    <record id="view_search_routes" model="ir.ui.view">
+      <field name="name">Routes search</field>
+      <field name="model">cxc.route</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="driver_id" />
+        </search>
+      </field>
+    </record>
+
+  <record id="action_get_all_my_routes" model="ir.actions.server" >
+      <field name="name">Get all my routes</field>
+      <field name="model_id" ref="model_cxc_route"/>
+      <field name="condition">True</field>
+      <field name="type">ir.actions.server</field>
+      <field name="state">code</field>
+      <field name="code">
+          action = env["cxc.route"].get_my_routes(env.uid)
+      </field>
+  </record>
+
+  </data>
+</odoo>

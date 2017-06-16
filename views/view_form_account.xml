@@ -1,7 +1,6 @@
 <odoo>
   <data>
-    <act_window id="action_cxc_account" name="Cuentas" res_model="cxc.account" view_mode="tree,form,kanban" />
-
+    
     <record id="view_form_account" model="ir.ui.view">
       <field name="name">Customer account form</field>
       <field name="model">cxc.account</field>
@@ -66,6 +65,7 @@
         </search>
       </field>
     </record>
-
   </data>
+  
+  <act_window id="action_cxc_account" name="Cuentas" res_model="cxc.account" view_mode="tree,form,kanban" />
 </odoo>

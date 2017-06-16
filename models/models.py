@@ -2,11 +2,10 @@
 
 from odoo import models, fields, api
 
-
 class route(models.Model):
     _name = 'cxc.route'
 
-    name = fields.Char('RouteName')
+    name = fields.Char('Nombre de la ruta')
     date = fields.Datetime('Fecha de la ruta')
     driver_id = fields.Many2one('res.users', 'Conductor')
     zones = fields.Many2many( 'cxc.route.zone', # modelo relacionado
@@ -14,7 +13,32 @@ class route(models.Model):
                                         'route_id', # campo para "este" registro
                                         'zone_id', # campo para "otro" registro
                                         string='Zonas')
-    route_state = fields.Selection([(1,'Asignada'),(2,'Proceso'),(3,'Terminada')])
+    route_state = fields.Selection([(1,'Asignada'),(2,'Proceso'),(3,'Terminada')],'Estado de la ruta', default=1)
+    
+    def get_my_routes(self,uid):
+
+        form_ref = self.env['ir.model.data'].get_object_reference('cuentas_por_cobrar', 'view_driver_route_detail')
+        form_id = form_ref[1] if form_ref else False
+
+        tree_ref = self.env['ir.model.data'].get_object_reference('cuentas_por_cobrar', 'view_driver_routes')
+        tree_id = tree_ref[1] if tree_ref else False
+
+        return {
+            'type': 'ir.actions.act_window',
+            "name":"Ruta actual",
+            "res_model":"cxc.route",
+            'views':[(tree_id, 'tree'),(form_id, 'form')],
+            "view_mode": 'tree,form',
+            "target":"current",
+            "context": {'search_default_driver_id':uid}
+        }
+    
+    def start_route(self):
+        self.route_state=2
+    
+    def end_route(self):
+        self.route_state=3
+        
 
 
 class zone(models.Model):
@@ -22,7 +46,6 @@ class zone(models.Model):
 
     name = fields.Char('Nombre de la zona')
     customers = fields.One2many('res.partner','zone_id', 'Clientes')
-    #route_id = fields.Many2one('cxc.route', 'Ruta')
 
 class customer(models.Model):
     _inherit = 'res.partner'

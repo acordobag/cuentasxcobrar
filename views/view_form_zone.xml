@@ -1,6 +1,6 @@
 <odoo>
     <data>
-      <act_window id="action_list_zones" name="Zonas" res_model="cxc.route.zone" view_mode="tree,form" target="current" domain="[]" limit="80"/>
+      
 
       <record id="view_form_cxc_route_zone" model="ir.ui.view">
         <field name="name">Zonas</field>
@@ -38,4 +38,5 @@
       </record>
 
     </data>
+    <act_window id="action_list_zones" name="Zonas" res_model="cxc.route.zone" view_mode="tree,form" target="current" domain="[]" limit="80"/>
 </odoo>

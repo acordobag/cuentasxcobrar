@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+
+    <record id="view_driver_route_detail" model="ir.ui.view">
+        <field name="name">Detalle de ruta</field>
+        <field name="model">cxc.route</field>
+        <field name="arch" type="xml">
+          <form>
+            <header>
+                <button string="Iniciar" type="object" name="start_route" class="oe_highlight" attrs="{'invisible': [('route_state', '=', 2)]}"/>
+                <button string="Terminar" type="object" name="end_route" class="oe_highlight" attrs="{'invisible': [('route_state','=',1)]}"/>
+                <!--This will create the statusbar, thanks to the widget. -->
+	            <field name="route_state" widget="statusbar" clickable="False"/>
+	        </header>
+            <sheet>
+                <div class="oe_title">
+                    <label for="name" class="oe_edit_only"/>
+                    <h1><field name="name"/></h1>
+                </div>
+                <notebook>
+                    <page string="Cuentas" name="whiteboard">
+                        <field name="zones" />
+                    </page>
+                </notebook>
+            </sheet>
+          </form>
+        </field>
+    </record>
+
+  </data>
+</odoo>

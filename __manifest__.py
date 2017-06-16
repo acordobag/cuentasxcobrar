@@ -31,7 +31,8 @@
         'views/view_form_users_inherited.xml',
         'views/view_form_zone.xml',
         'views/view_form_route.xml',
-        'views/view_driver_current_route.xml',
+        'views/view_driver_routes.xml',
+        'views/view_driver_route_detail.xml',
         'views/cxc_view_main.xml'
     ]
     # only loaded in demonstration mode

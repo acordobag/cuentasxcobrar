@@ -1,7 +1,5 @@
 <odoo>
     <data>
-      <act_window id="action_list_not_approved" name="Sin Aprobar" res_model="cxc.account.payment" view_mode="tree,form" target="current" context="{'approved': False}" domain="[]" limit="80"/>
-
       <record id="view_form_cxc_account_payment" model="ir.ui.view">
         <field name="name">Payment form</field>
         <field name="model">cxc.account.payment</field>
@@ -36,4 +34,13 @@
       </record>
 
     </data>
+
+    <act_window id="action_list_not_approved" 
+      name="Sin Aprobar" 
+      res_model="cxc.account.payment" 
+      view_mode="tree,form" 
+      target="current" 
+      context="{'approved': False}" 
+      domain="[]" 
+      limit="80"/>
 </odoo>
