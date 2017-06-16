@@ -14,7 +14,15 @@ class route(models.Model):
                                         'zone_id', # campo para "otro" registro
                                         string='Zonas')
     route_state = fields.Selection([(1,'Asignada'),(2,'Proceso'),(3,'Terminada')],'Estado de la ruta', default=1)
+    route_accounts = fields.One2many('cxc.account', string='Cuentas de la ruta', compute='compute_customers')
     
+    @api.one
+    def compute_customers(self):
+        customers=[]
+        for zone in self.zones:
+            for c in zone.customers:
+                self.route_accounts+=c.accounts
+
     def get_my_routes(self,uid):
 
         form_ref = self.env['ir.model.data'].get_object_reference('cuentas_por_cobrar', 'view_driver_route_detail')
@@ -31,6 +39,23 @@ class route(models.Model):
             "view_mode": 'tree,form',
             "target":"current",
             "context": {'search_default_driver_id':uid}
+        }
+
+    def get_all_routes(self):
+
+        form_ref = self.env['ir.model.data'].get_object_reference('cuentas_por_cobrar', 'view_form_route')
+        form_id = form_ref[1] if form_ref else False
+
+        tree_ref = self.env['ir.model.data'].get_object_reference('cuentas_por_cobrar', 'view_tree_route')
+        tree_id = tree_ref[1] if tree_ref else False
+
+        return {
+            'type': 'ir.actions.act_window',
+            "name":"Ruta actual",
+            "res_model":"cxc.route",
+            'views':[(tree_id, 'tree'),(form_id, 'form')],
+            "view_mode": 'tree,form',
+            "target":"current"
         }
     
     def start_route(self):
@@ -101,7 +126,7 @@ class account(models.Model):
             'view_type': 'form',
             'view_mode': 'form',
             'view_id': view_id,
-            'target': 'current',
+            'target': 'new',
             'context': {'default_accountId': self.id}
         }
 
