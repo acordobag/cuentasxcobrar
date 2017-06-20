@@ -25,6 +25,7 @@
               <group>
                 <field name="charge" required="1" />
                 <field name="paymentTerm" required="1" />
+                <field name="already_pay" readonly="1" />
               </group>
             </group>
             <notebook>

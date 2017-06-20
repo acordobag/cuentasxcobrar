@@ -105,7 +105,7 @@ class account(models.Model):
     paymentTerm = fields.Selection([(1,'Semanal'),(2,'Quincenal'),(3,'Mensual pago 15s'),(4,'Mensual pago 30s')],'Forma de pago')
     customerId = fields.Many2one('res.partner','Cliente')
     payments = fields.One2many('cxc.account.payment','accountId','Abonos')
-    already_pay = fields.Boolean('Pagada?')
+    already_pay = fields.Boolean('Abonada?')
 
     @api.one
     def compute_calc_actual_ammount(self):
@@ -114,6 +114,9 @@ class account(models.Model):
             if p.approved:
                 self.actualAmmount -= p.ammount
 
+    @api.depends('payments') # if these fields are changed, call method
+    def _check_change(self):
+        self.already_pay=True
 
     def create_payment(self):
 
