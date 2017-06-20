@@ -18,7 +18,15 @@
                     <h1><field name="name"/></h1>
                 </div>
                 <notebook>
-
+                    <page string="Cuentas de clientes de la ruta" name="whiteboard">
+                        <field name="route_accounts" domain="[('already_pay','=',True)]">
+                            <tree>
+                                <field name="name"/>
+                                <field name="charge"/>
+                                <field name="actualAmmount"/>
+                            </tree>
+                        </field>
+                    </page>
                 </notebook>
             </sheet>
           </form>
